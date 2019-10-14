@@ -5,7 +5,7 @@ public class clsMain {
 		// TODO Auto-generated method stub
 		
 		
-		System.out.println("Hola, esto es un proyecto de bicicletas.");
+		System.out.println("Hola, esto es un proyecto de bicicletas. Para clase.");
 	}
 
 }
