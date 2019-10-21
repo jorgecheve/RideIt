@@ -6,7 +6,12 @@ public class clsMain {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Hola, esto es un proyecto de bicicletas. Para clase.");
-		gestorLN.altaBicicleta(1, "Rojo", "Standard", null);//Prueba creacion biciclera
+		//Bicicletas de prueba.
+		gestorLN.altaBicicleta(1, "Rojo", "Standard", "Boulevard");
+		gestorLN.altaBicicleta(2, "Amarillo", "Tandem", "Plaza gipuzkoa");
+		gestorLN.altaBicicleta(3, "Azul", "Mountain", "Monte Ulia");
+		
+		
 	}
 
 }
