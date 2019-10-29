@@ -72,7 +72,17 @@ public class BaseDatos {
 			// e.printStackTrace();  
 		}
 	}
-	
+
+	public static void crearTablaUsuario() 
+	{
+		if (statement==null) return;
+		try {
+			statement.executeUpdate("create table if not exists USUARIO ( nombre string, apellido string, dni string, user string , password string)");
+		} catch (SQLException e) {
+			// Si hay excepción es que la tabla ya existía (lo cual es correcto)
+			// e.printStackTrace();  
+		}
+	}
 	public static void insertBicicleta(int id, String color, String modelo, String ubicacion)
 	{
 		if (statement==null) return;
@@ -84,6 +94,25 @@ public class BaseDatos {
 			 pstmt.setString(2, color);
 			 pstmt.setString(3, modelo);
 			 pstmt.setString(4, ubicacion);
+			 pstmt.executeUpdate();
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public static void insertUsuario(String nombre, String apellido, String dni, String user,String password )
+	{
+		if (statement==null) return;
+		String i="insert into USUARIO (nombre, apellido, dni, user,password) values(?,?,?,?,?)";
+		
+		try {
+			 PreparedStatement pstmt = connection.prepareStatement(i);
+			 pstmt.setString(1,nombre);
+			 pstmt.setString(2, apellido);
+			 pstmt.setString(3, dni);
+			 pstmt.setString(4, user);
+			 pstmt.setString(4, password);
 			 pstmt.executeUpdate();
 			 
 		} catch (SQLException e) {
