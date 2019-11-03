@@ -99,10 +99,8 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 
 		BaseDatos.close();
 		
-		/*for(clsBicicleta b: pruebaList) 
-		{
-			System.out.println(b.getBici_id()+b.getColor()+b.getModelo()+b.getUbicacion());
-		}*/
+		
+		
 		return List;
 	}
 
