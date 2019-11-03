@@ -112,7 +112,7 @@ public class BaseDatos {
 			 pstmt.setString(2, apellido);
 			 pstmt.setString(3, dni);
 			 pstmt.setString(4, user);
-			 pstmt.setString(4, password);
+			 pstmt.setString(5, password);
 			 pstmt.executeUpdate();
 			 
 		} catch (SQLException e) {
@@ -142,6 +142,33 @@ public class BaseDatos {
                 
                 clsBicicleta bike = new clsBicicleta(id_bike, col, modelo, localizacion);
                 lista.add(bike);
+                				}
+			
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	public static ArrayList<clsUsuario> getAllUsuarios()
+	{
+		if(statement==null)return null;
+		ArrayList<clsUsuario>lista = new ArrayList<clsUsuario>();
+		String s="select * from USUARIO;";
+		try {
+			ResultSet rs=statement.executeQuery(s);
+			
+			while (rs.next()) {
+				 
+				String nombre= rs.getString("nombre");
+	                String apellido = rs.getString("apellido");
+	                String dni = rs.getString("dni");
+	                String user = rs.getString("user");
+	                String password = rs.getString("password");
+	                
+	                clsUsuario usuario = new clsUsuario(nombre, apellido, dni, user,password);
+	                lista.add(usuario);
+                
                 				}
 			
 			} catch (SQLException e) {

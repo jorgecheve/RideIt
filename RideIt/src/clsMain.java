@@ -11,6 +11,9 @@ public class clsMain {
 		gestorLN.altaBicicleta(2, "Amarillo", "Tandem", "Plaza gipuzkoa");
 		gestorLN.altaBicicleta(3, "Azul", "Mountain", "Monte Ulia");
 		
+		/*gestorLN.altaUsuario("IGNACIO", "SAEZ", "72552960T", "igna", "aaaa2");
+		gestorLN.altaUsuario("jorge", "echeverria", "72552960T", "aaa", "134a2");
+		*/
 		
 	}
 
