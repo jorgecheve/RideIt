@@ -15,14 +15,14 @@ public class clsMain {
 		gestorLN.altaBicicleta(2, "Amarillo", "Tandem", "Plaza gipuzkoa");
 		gestorLN.altaBicicleta(4, "Azul", "Mountain", "Monte Ulia");
 		
-		/*ArrayList<clsBicicleta>lista2 = new ArrayList<clsBicicleta>();
+		ArrayList<clsBicicleta>lista2 = new ArrayList<clsBicicleta>();
 		lista2 = gestorLN.getBicisBD();
 		
 		for(clsBicicleta b: lista2) {
 			System.out.println(b.getBici_id()+": "+b.getModelo()+", "+ b.getColor());
-		}/*
+		}
 		
-		/*
+
 		gestorLN.altaUsuario("IGNACIO", "SAEZ", "7255296T", "igna", "aaaa2");
 		gestorLN.altaUsuario("Martin", "Odegaard", "21212121R", "martin", "134a2");
 		
@@ -31,8 +31,9 @@ public class clsMain {
 		
 		for(clsUsuario u: lista) {
 			System.out.println(u.getDni()+": "+u.getNombre());
-		}*/
+		}
 		
+		System.out.println("Esto es un commit de prueba");
 		
 		
 		
