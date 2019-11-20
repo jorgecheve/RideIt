@@ -58,7 +58,7 @@ public class clsAlquiler {
 	public int getDuracion() 
 	{
 		Duration duracion=Duration.between(this.fecha_inicio, this.fecha_fin);
-		System.out.println("Esta es la duracion"+duracion);
+		System.out.println("Esta es la duracion del alquiler"+duracion);
 		return 0;
 	}
 	
