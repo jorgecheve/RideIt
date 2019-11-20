@@ -1,15 +1,18 @@
 package LN;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import LD.BaseDatos;
 import LD.clsBicicleta;
 import LD.clsUsuario;
+import LD.clsAlquiler;
 
 public class gestorLN {
 	
 	private static ArrayList<clsBicicleta> listaBicis; 
 	private static ArrayList<clsUsuario> listaUsuarios; 
+	private static ArrayList<clsAlquiler> listaAlquileres;
 	
 	public static void altaBicicleta(int cod, String color, String modelo, String ubicacion){
 		
@@ -18,8 +21,8 @@ public class gestorLN {
 		if(listaBicis == null) 
 		{
 			listaBicis= new ArrayList<clsBicicleta>();
-			//Cuando se inicie el programa la arrayist estará vacía. Entonces cogeremos lo de la base de datos por si ya hay datos.
-			//Salta una excepción la primera vez cuando aún no existe la tabla. Se debe recoger la excepcion.
+			//Cuando se inicie el programa la arrayist estarï¿½ vacï¿½a. Entonces cogeremos lo de la base de datos por si ya hay datos.
+			//Salta una excepciï¿½n la primera vez cuando aï¿½n no existe la tabla. Se debe recoger la excepcion.
 			
 			listaBicis = gestorLN.getBicisBD();
 			
@@ -53,8 +56,8 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 		if(listaUsuarios == null) 
 		{
 			listaUsuarios= new ArrayList<clsUsuario>();
-			//Cuando se inicie el programa la arrayist estará vacía. Entonces cogeremos lo de la base de datos por si ya hay datos.
-			//Salta una excepción la primera vez cuando aún no existe la tabla. Se debe recoger la excepcion.
+			//Cuando se inicie el programa la arrayist estarï¿½ vacï¿½a. Entonces cogeremos lo de la base de datos por si ya hay datos.
+			//Salta una excepciï¿½n la primera vez cuando aï¿½n no existe la tabla. Se debe recoger la excepcion.
 			listaUsuarios = gestorLN.getUsuariosBD();
 		}
 		
@@ -79,6 +82,31 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 		
 		//System.out.println(listaBicis.size());
 	}
+
+public static void altaAlquiler(int id_bici, String dni_user){
+	
+	
+	
+	if(listaAlquileres == null) 
+	{
+		listaAlquileres= new ArrayList<clsAlquiler>();
+		//Cuando se inicie el programa la arrayist estarï¿½ vacï¿½a. Entonces cogeremos lo de la base de datos por si ya hay datos.
+		//Salta una excepciï¿½n la primera vez cuando aï¿½n no existe la tabla. Se debe recoger la excepcion.
+		listaAlquileres = gestorLN.getAlquileresBD();
+	}
+
+		clsAlquiler alqui = new clsAlquiler(id_bici, dni_user, listaAlquileres.size());
+		listaAlquileres.add(alqui);
+		
+		BaseDatos.initBD("RideIt");
+		BaseDatos.crearTablaAlquiler();
+		BaseDatos.insertAlquiler(alqui.getIdAlquiler(), id_bici, dni_user, alqui.getFecha_inicio(), alqui.getFecha_fin());
+		BaseDatos.close();
+	
+	
+	//System.out.println(listaBicis.size());
+}
+
 	public static ArrayList<clsBicicleta> getBicisBD()
 	{
 		BaseDatos.initBD("RideIt");
@@ -97,8 +125,17 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 		List = BaseDatos.getAllUsuarios();
 
 		BaseDatos.close();
+			
+		return List;
+	}
+	public static ArrayList<clsAlquiler> getAlquileresBD()
+	{
+		BaseDatos.initBD("RideIt");
+		ArrayList<clsAlquiler>List=new ArrayList<clsAlquiler>();
 		
-		
+		List = BaseDatos.getAllAlquileres();
+
+		BaseDatos.close();
 		
 		return List;
 	}

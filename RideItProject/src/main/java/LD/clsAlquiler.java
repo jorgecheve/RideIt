@@ -1,7 +1,7 @@
 package LD;
 
 import java.time.Duration;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class clsAlquiler {
 	
@@ -9,19 +9,28 @@ public class clsAlquiler {
 	private int bici_id;
 	private String user_dni;
 	
-	private LocalDate fecha_inicio;
-	private LocalDate fecha_fin;
+	private LocalDateTime fecha_inicio;
+	private LocalDateTime fecha_fin;
 	
 	
 	
+	public clsAlquiler(int bici_id, String user_dni, int idAlquiler, LocalDateTime inicio, LocalDateTime fin) {
+		super();
+		this.bici_id = bici_id;
+		this.user_dni = user_dni;
+		this.idAlquiler = idAlquiler;
+		this.fecha_inicio = inicio;
+		this.fecha_fin = fin;
+	}
 	public clsAlquiler(int bici_id, String user_dni, int idAlquiler) {
 		super();
 		this.bici_id = bici_id;
 		this.user_dni = user_dni;
 		this.idAlquiler = idAlquiler;
 		
-		LocalDate ini = LocalDate.now();
+		LocalDateTime ini = LocalDateTime.now();
 		this.fecha_inicio = ini;
+		this.fecha_fin=null;
 	}
 	
 	public int getIdAlquiler() {
@@ -42,24 +51,31 @@ public class clsAlquiler {
 	public void setUser_dni(String user_dni) {
 		this.user_dni = user_dni;
 	}
-	public LocalDate getFecha_inicio() {
+	public LocalDateTime getFecha_inicio() {
 		return fecha_inicio;
 	}
-	public void setFecha_inicio(LocalDate fecha_inicio) {
+	public void setFecha_inicio(LocalDateTime fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
-	public LocalDate getFecha_fin() {
+	public LocalDateTime getFecha_fin() {
 		return fecha_fin;
 	}
-	public void setFecha_fin(LocalDate fecha_fin) {
+	public void setFecha_fin(LocalDateTime fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
 	
+	//Si se devuelve -1 es que no se ha devuelto la bici todavía
 	public int getDuracion() 
 	{
-		Duration duracion=Duration.between(this.fecha_inicio, this.fecha_fin);
-		System.out.println("Esta es la duracion del alquiler"+duracion);
-		return 0;
+		//LocalDateTime finPrueba = this.fecha_inicio.plusSeconds(1581);
+		int diferencia = -1;
+		if(this.fecha_inicio!=null && this.fecha_fin!=null) 
+		{
+			Duration duracion=Duration.between(this.fecha_inicio, this.fecha_fin);
+			diferencia = (int) duracion.toMinutes();
+		}
+		
+		return diferencia;
 	}
 	
 
