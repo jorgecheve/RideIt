@@ -78,4 +78,24 @@ public class clsEstacion {
 		System.out.println("No hay plazas disponibles para estacionar");
 		return false;
 	}
+	
+	public int CogerBicicleta(int NumeroP)
+	{
+		int idBicicleta=this.Plazas[NumeroP];
+		
+		if(idBicicleta!=-1)
+		{
+			Plazas[NumeroP]=-1;
+			System.out.println("Bicicleta recogida");
+			return idBicicleta;
+		}
+		else
+		{
+			System.out.println("No existe Bicicleta en esa plaza");
+			return -1;
+			
+		}
+		
+		
+	}
 }
