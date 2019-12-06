@@ -14,7 +14,7 @@ public class gestorLN {
 	private static ArrayList<clsUsuario> listaUsuarios; 
 	private static ArrayList<clsAlquiler> listaAlquileres;
 	
-	public static void altaBicicleta(int cod, String color, String modelo, String ubicacion){
+	public static boolean altaBicicleta(int cod, String color, String modelo, String ubicacion){
 		
 		clsBicicleta bike = new clsBicicleta(cod, color, modelo, ubicacion);
 		
@@ -30,6 +30,7 @@ public class gestorLN {
 		
 		//CHEQUEA QUE NO SE REPITE EL ID
 		boolean repetido = false;
+		boolean resultado = false;
 		for(clsBicicleta b:listaBicis) 
 		{
 			if(b.getBici_id()==cod) 
@@ -43,8 +44,12 @@ public class gestorLN {
 			BaseDatos.crearTablaBicicleta();
 			BaseDatos.insertBicicleta(cod, color, modelo, ubicacion);
 			BaseDatos.close();
+			resultado=true;
+			return resultado;
 		}else {
 			System.out.println("La bicicleta que has intentado introducir tiene un identificador que ya existe.");
+			resultado=false;
+			return resultado;
 		}
 		
 		//System.out.println(listaBicis.size());

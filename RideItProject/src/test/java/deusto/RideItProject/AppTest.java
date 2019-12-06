@@ -1,5 +1,11 @@
 package deusto.RideItProject;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
+import LD.clsBicicleta;
+import LN.gestorLN;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -31,8 +37,22 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
+    
+ 	public void testAltaBici() {
+		
+		boolean a = gestorLN.altaBicicleta(6, "Azul", "Mountain", "Monte Ulia");		       	
+    	assertFalse(a); 
+    	
+    	boolean b = gestorLN.altaBicicleta(200, "Rojo", "Mountain", "Errotaburu");		       	
+    	assertTrue(b); 
+    	    	
+	}
+ 	
     public void testApp()
     {
         assertTrue( true );
     }
+    
+    
+   
 }
