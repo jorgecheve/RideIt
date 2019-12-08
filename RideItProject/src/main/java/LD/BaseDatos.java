@@ -97,6 +97,17 @@ public class BaseDatos {
 		}
 	}
 	
+	public static void crearTablaEstacion() 
+	{
+		if (statement==null) return;
+		try {
+			statement.executeUpdate("create table if not exists ESTACION ( idEstacion int, localizacion string)");
+		} catch (SQLException e) {
+			// Si hay excepci�n es que la tabla ya exist�a (lo cual es correcto)
+			// e.printStackTrace();  
+		}
+	}
+	
 	public static void insertAlquiler(int id, int bici_id, String user_dni, LocalDateTime inicio, LocalDateTime fin)
 	{
 		if (statement==null) return;
@@ -156,6 +167,23 @@ public class BaseDatos {
 			 pstmt.setString(3, dni);
 			 pstmt.setString(4, user);
 			 pstmt.setString(5, password);
+			 pstmt.executeUpdate();
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void insertEstacion(int idEstacion, String localizacion)
+	{
+		if (statement==null) return;
+		String i="insert into ESTACION (idEstacion, localizacion) values(?,?)";
+		
+		try {
+			 PreparedStatement pstmt = connection.prepareStatement(i);
+			 pstmt.setInt(1, idEstacion);
+			 pstmt.setString(2, localizacion);
 			 pstmt.executeUpdate();
 			 
 		} catch (SQLException e) {
@@ -252,6 +280,32 @@ public class BaseDatos {
 	                
 	                clsUsuario usuario = new clsUsuario(nombre, apellido, dni, user,password);
 	                lista.add(usuario);
+                
+                				}
+			
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			//e.printStackTrace();
+		}
+		return lista;
+	}
+	
+	public static ArrayList<clsEstacion> getAllEstaciones()
+	{
+		if(statement==null)return null;
+		ArrayList<clsEstacion>lista = new ArrayList<clsEstacion>();
+		String s="select * from ESTACIONES;";
+		try {
+			ResultSet rs=statement.executeQuery(s);
+			
+			while (rs.next()) {
+				 
+				int idEstacion= rs.getInt("idEstacion");
+	                String localizacion = rs.getString("localizacion");
+	              
+	                
+	                clsEstacion estacion = new clsEstacion(idEstacion, localizacion);
+	                lista.add(estacion);
                 
                 				}
 			
