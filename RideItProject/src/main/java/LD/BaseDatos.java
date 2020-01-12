@@ -121,7 +121,9 @@ public class BaseDatos {
 			// e.printStackTrace();  
 		}
 	}
-	
+	/**
+	 * Método encargado de grabar los alquileres de bicis
+	 */
 	public static void insertAlquiler(int id, int bici_id, String user_dni, LocalDateTime inicio, LocalDateTime fin)
 	{
 		if (statement==null) return;
