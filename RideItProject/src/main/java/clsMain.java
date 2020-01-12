@@ -11,9 +11,11 @@ import LD.clsAlquiler;
 import LN.gestorLN;
 /**
  * 
- * @author Jorge Echeverria
- *
+ * @author Jorge Echeverria Ignacio Sáez Ignacio Garbizu Mikel Aguiriano
+ * La clase clsMain es la clase encargada de lanzar la aplicación, cargando una serie 
+ * de bicicletas y usuarios en la BD
  */
+
 public class clsMain {
 
 	public static void main(String[] args) {
