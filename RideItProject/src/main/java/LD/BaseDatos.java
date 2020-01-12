@@ -123,6 +123,11 @@ public class BaseDatos {
 	}
 	/**
 	 * Método encargado de grabar los alquileres de bicis
+	 * @param id
+	 * @param bici_id
+	 * @param user_dni
+	 * @param inicio
+	 * @param fin
 	 */
 	public static void insertAlquiler(int id, int bici_id, String user_dni, LocalDateTime inicio, LocalDateTime fin)
 	{
@@ -152,7 +157,13 @@ public class BaseDatos {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Método encargado de insertar una bicicleta en la tabla bicicleta
+	 * @param id
+	 * @param color
+	 * @param modelo
+	 * @param ubicacion
+	 */
 	public static void insertBicicleta(int id, String color, String modelo, String ubicacion)
 	{
 		if (statement==null) return;
@@ -171,6 +182,14 @@ public class BaseDatos {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Método encargado de insertar un usuario en la tabla usuario
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 *@param user
+	 *@param password
+	 */
 	public static void insertUsuario(String nombre, String apellido, String dni, String user,String password )
 	{
 		if (statement==null) return;
@@ -190,7 +209,11 @@ public class BaseDatos {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Método encargado de insertar una estación en la tabla estación
+	 * @param idEstacion
+	 * @param localizacion
+	 */
 	public static void insertEstacion(int idEstacion, String localizacion)
 	{
 		if (statement==null) return;
@@ -207,7 +230,9 @@ public class BaseDatos {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Método que devuelve todas las bicicletas guardadas en la tabla bicicleta de la BD
+	 */
 	public static ArrayList<clsBicicleta> getAllBicicletas()
 	{
 		if(statement==null)return null;
@@ -237,6 +262,9 @@ public class BaseDatos {
 		}
 		return lista;
 	}
+	/**
+	 * Método que devuelve todas los alquileres guardados en la tabla alquiler de la BD
+	 */
 	public static ArrayList<clsAlquiler> getAllAlquileres()
 	{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -277,7 +305,10 @@ public class BaseDatos {
 		}
 		return lista;
 	}
-	
+	/**
+	 * Método que registra la finalización del alquiler de una bicicleta por parte de un usuario
+	 * @param user_bici
+	 */
 	public static void finalizarAlquiler(String user_dni)
 	//(String user_dni, LocalDateTime fin) 
 	{
@@ -301,7 +332,9 @@ public class BaseDatos {
 		}
 		
 	}
-	
+	/**
+	 * Método que devuelve todas los usuarios guardados en la tabla usuario de la BD
+	 */
 	public static ArrayList<clsUsuario> getAllUsuarios()
 	{
 		if(statement==null)return null;
@@ -329,7 +362,9 @@ public class BaseDatos {
 		}
 		return lista;
 	}
-	
+	/**
+	 * Método que devuelve todas las estaciones guardadas en la tabla estaciones de la BD
+	 */
 	public static ArrayList<clsEstacion> getAllEstaciones()
 	{
 		if(statement==null)return null;

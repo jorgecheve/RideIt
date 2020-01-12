@@ -2,7 +2,11 @@ package LD;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-
+/**
+ * 
+ * 
+ *
+ */
 public class clsAlquiler {
 	
 	private int idAlquiler;
