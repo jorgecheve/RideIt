@@ -68,6 +68,14 @@ public class clsUsuario
 	public void setPasswaord(String passwaord) {
 		this.passwaord = passwaord;
 	}
+
+
+	@Override
+	public String toString() {
+		return "clsUsuario [nombre=" + nombre + ", apellidos=" + apellidos + ", dni=" + dni + ", user=" + user
+				+ ", passwaord=" + passwaord + "]";
+	}
+	
 	
 	
 	

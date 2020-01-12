@@ -82,7 +82,7 @@ public class BaseDatos {
 			statement.executeUpdate("create table if not exists USUARIO ( nombre string, apellido string, dni string, user string , password string)");
 		} catch (SQLException e) {
 			// Si hay excepci�n es que la tabla ya exist�a (lo cual es correcto)
-			// e.printStackTrace();  
+			e.printStackTrace();  
 		}
 	}
 	
@@ -262,6 +262,30 @@ public class BaseDatos {
 		return lista;
 	}
 	
+	public static void finalizarAlquiler(String user_dni)
+	//(String user_dni, LocalDateTime fin) 
+	{
+		if (statement==null) return;
+		
+				//(id, bici_id, user_dni, fecha_ini, fecha_fin) values(?,?,?,?,?)";
+		
+		
+		String i="DELETE FROM ALQUILER WHERE user_dni='"+user_dni+"' AND fecha_fin=''";
+		
+		
+		try {
+			 PreparedStatement pstmt = connection.prepareStatement(i);
+			 
+			 pstmt.executeUpdate();
+			 System.out.println("se intenta");
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public static ArrayList<clsUsuario> getAllUsuarios()
 	{
 		if(statement==null)return null;
@@ -272,7 +296,7 @@ public class BaseDatos {
 			
 			while (rs.next()) {
 				 
-				String nombre= rs.getString("id");
+				String nombre= rs.getString("nombre");
 	                String apellido = rs.getString("apellido");
 	                String dni = rs.getString("dni");
 	                String user = rs.getString("user");
@@ -285,7 +309,7 @@ public class BaseDatos {
 			
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		return lista;
 	}

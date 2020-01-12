@@ -57,7 +57,7 @@ public class clsMain {
 			System.out.println(u.getDni()+": "+u.getNombre());
 		}*/
 		
-		
+		/*
 		clsAlquiler a = new clsAlquiler(1, "dni1",1);
 		clsAlquiler b =new clsAlquiler(2, "dni2",2);
 		
@@ -100,6 +100,7 @@ public class clsMain {
 		ID=sc.nextInt();
 		gestorLN.cogerBici(DNI, ID);
 		System.out.println(alq.size());
+		*/
 		
 		//FALTA hacer que se modifique el registro de alquiler cuando se deje la bici.
 			//HACER funciones de coger bici

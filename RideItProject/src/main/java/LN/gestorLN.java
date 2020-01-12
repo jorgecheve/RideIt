@@ -88,6 +88,7 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 			System.out.println("El usuario que has intentado introducir tiene un identificador que ya existe.");
 		}
 		
+		System.out.println("USUARIO CREADO HULIO");
 		//System.out.println(listaBicis.size());
 	}
 
@@ -127,8 +128,6 @@ public static void altaEstacion(int idEstacion, String localizacion)
 }
 
 public static void altaAlquiler(int id_bici, String dni_user){
-	
-	
 	
 	if(listaAlquileres == null) 
 	{
@@ -199,13 +198,121 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		clsBicicleta Bici = new clsBicicleta(idBicicleta, null, null, null);
 		gestorLN.altaAlquiler(idBicicleta, Dni);
 		
-		
-		
 	}
 	
-	public static void dejarBici(int idBicicleta)
+	public static int dejarBici(String dni)
 	{
+		clsAlquiler modif = null;
 		
+		for(clsAlquiler a: listaAlquileres) {
+			if(a.getUser_dni().equals(dni) && a.getFecha_fin()==null) {
+				LocalDateTime fin = LocalDateTime.now();
+				a.setFecha_fin(fin);
+				modif=a;	
+			}
+		}
+		
+		BaseDatos.initBD("RideIt");
+		System.out.println("PROCEDO A INTENTAR MODIFICAR ALQUILER");
+		BaseDatos.finalizarAlquiler(dni);
+		BaseDatos.insertAlquiler(modif.getIdAlquiler(), modif.getBici_id(), modif.getUser_dni(), modif.getFecha_inicio(), modif.getFecha_fin());
+		BaseDatos.close();	
+		
+		return modif.getDuracion();
 	}
+	
+	
+	public static boolean autenticacion(String usuario, String pswd) 
+	{
+		boolean autenticado=false;
+		for(clsUsuario u: listaUsuarios) 
+		{
+			if(u.getUser().equals(usuario)) 
+			{
+				if(u.getPasswaord().equals(pswd)) {
+					autenticado=true;
+					return autenticado;
+				}
+			}
+		}
+		
+		return autenticado;
+	}
+	
+	public static ArrayList<clsBicicleta> bicisDisp()
+	{
+		ArrayList<clsBicicleta> bicis = new ArrayList<clsBicicleta>();
+		bicis= listaBicis;
+		
+		for(clsAlquiler al:listaAlquileres)
+		{
+			if(al.getFecha_fin()==null) 
+			{
+				int idBici=al.getBici_id();
+				
+				for(int i=0; i<bicis.size();i++) 
+				{
+					if(idBici==bicis.get(i).getBici_id()) 
+					{
+						bicis.remove(i);
+					}
+				}
+			}
+		}
+		return bicis;
+	}
+	
+	public static void iniciarListas() 
+	{
+		listaUsuarios = gestorLN.getUsuariosBD();
+		listaAlquileres = gestorLN.getAlquileresBD();
+		listaBicis= gestorLN.getBicisBD();
+	}
+	
+	public static clsUsuario getUsuario(String user) 
+	{
+		for(clsUsuario u: listaUsuarios) {
+			if(u.getUser().equals(user)) {
+				return u;
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	public static boolean estadoUser(String dni) 
+	{
+		boolean pendiente=false;
+		
+		for(clsAlquiler a:listaAlquileres) {
+			if(a.getFecha_fin()==null) 
+			{
+				if(a.getUser_dni().equals(dni)) {
+					pendiente = true;
+				}
+			}
+			
+		}
+		
+		return pendiente;
+	}
+	
+	public static void probarListaUs() 
+	{
+		for(clsUsuario user: listaUsuarios) {
+			System.out.println(user);
+		}
+		System.out.println("FIN USUARIOS");
+		for(clsAlquiler user: listaAlquileres) {
+			System.out.println(user);
+		}
+		System.out.println("FIN Alquileres");
+		for(clsBicicleta user: listaBicis) {
+			System.out.println(user);
+		}
+		System.out.println("FIN BICIS");
+	}
+	
 
 }

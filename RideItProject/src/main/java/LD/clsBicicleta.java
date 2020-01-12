@@ -4,7 +4,7 @@ public class clsBicicleta {
 	
 	private int bici_id;
 	private String color;
-	private String modelo; //Podemos diferenciarlas entre electricas, tandem o estándar por ejemplo. Y que al hacer el setModelo se controle que es una de esas.
+	private String modelo; //Podemos diferenciarlas entre electricas, tandem o estï¿½ndar por ejemplo. Y que al hacer el setModelo se controle que es una de esas.
 	private String ubicacion; //Esto pueden ser coordenadas por ejemplo. O la ubicacion de una estacion, que se modifique cuando se deja en alguna nueva.
 	
 	
@@ -41,6 +41,14 @@ public class clsBicicleta {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
+
+	@Override
+	public String toString() {
+		return "Bicicleta [id=" + bici_id + ", color=" + color + ", modelo=" + modelo + ", ubicacion="
+				+ ubicacion + "]";
+	}
+	
+	
 	
 	
 	

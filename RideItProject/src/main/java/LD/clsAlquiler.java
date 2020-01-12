@@ -77,6 +77,12 @@ public class clsAlquiler {
 		
 		return diferencia;
 	}
+	@Override
+	public String toString() {
+		return "clsAlquiler [idAlquiler=" + idAlquiler + ", bici_id=" + bici_id + ", user_dni=" + user_dni
+				+ ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin + "]";
+	}
+	
 	
 
 }
