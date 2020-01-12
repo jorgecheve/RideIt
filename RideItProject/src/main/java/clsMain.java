@@ -13,7 +13,7 @@ import LN.gestorLN;
  * 
  * @author Jorge Echeverria Ignacio Sáez Ignacio Garbizu Mikel Aguiriano
  * La clase clsMain es la clase encargada de lanzar la aplicación, cargando una serie 
- * de bicicletas y usuarios en la base de datos
+ * de bicicletas y usuarios en la base de datos.
  */
 
 public class clsMain {
