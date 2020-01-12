@@ -9,7 +9,11 @@ import LD.clsEstacion;
 import LD.clsUsuario;
 import LD.clsAlquiler;
 import LN.gestorLN;
-
+/**
+ * 
+ * @author Jorge Echeverria
+ *
+ */
 public class clsMain {
 
 	public static void main(String[] args) {

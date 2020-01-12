@@ -11,7 +11,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
-
+/**
+ * 
+ * Clase BaseDatos será la encargada de contener todos los métodos necesarios para interactuar 
+ * con la base de datos. La BD contendrá las tablas de usuarios, bicicletas, alquileres y estaciones.
+ *
+ */
 public class BaseDatos {
 	
 	private static Connection connection = null;
@@ -62,6 +67,9 @@ public class BaseDatos {
 		return statement;
 	}
 
+	/**
+	 * Método encargado de crear la tabla bicicleta en la BD
+	 */
 	public static void crearTablaBicicleta() 
 	{
 		if (statement==null) return;
@@ -74,7 +82,9 @@ public class BaseDatos {
 			// e.printStackTrace();  
 		}
 	}
-
+	/**
+	 * Método encargado de crear la tabla usuario en la BD
+	 */
 	public static void crearTablaUsuario() 
 	{
 		if (statement==null) return;
@@ -85,7 +95,9 @@ public class BaseDatos {
 			e.printStackTrace();  
 		}
 	}
-	
+	/**
+	 * Método encargado de crear la tabla alquiler en la BD
+	 */
 	public static void crearTablaAlquiler() 
 	{
 		if (statement==null) return;
@@ -96,7 +108,9 @@ public class BaseDatos {
 			// e.printStackTrace();  
 		}
 	}
-	
+	/**
+	 * Método encargado de crear la tabla estación en la BD
+	 */
 	public static void crearTablaEstacion() 
 	{
 		if (statement==null) return;
