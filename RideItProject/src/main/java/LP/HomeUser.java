@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import LD.clsBicicleta;
+import LD.clsEstacion;
 import LN.gestorLN;
 
 import javax.swing.JLabel;
@@ -24,19 +25,17 @@ public class HomeUser extends JFrame {
 	private JPanel contentPane;
 	
 	protected DefaultListModel<clsBicicleta> modelo1;
+	protected DefaultListModel<clsEstacion> modelo2;
 	private JList <clsBicicleta> jListaBicis;
+	private JList <clsEstacion> jListaEstaciones;
 	private ArrayList <clsBicicleta> lista;
+	private ArrayList <clsEstacion> listaEst;
 	
 	/**
 	 * Create the frame.
 	 */
 	public HomeUser(String usuario) {
 		
-		gestorLN.altaBicicleta(7, "Rojo", "Standard", "Boulevard");
-		gestorLN.altaBicicleta(5, "Amarillo", "Tandem", "Plaza gipuzkoa");
-		gestorLN.altaBicicleta(6, "Azul", "Mountain", "Monte Ulia");
-		gestorLN.altaUsuario("IGNACIO", "SAEZ", "7255296T", "igna", "aaaa2");
-		gestorLN.altaUsuario("Martin", "Odegaard", "21212121R", "martin", "134a2");
 		
 		final String dni = gestorLN.getUsuario(usuario).getDni();
 		
@@ -51,6 +50,22 @@ public class HomeUser extends JFrame {
 		lblBienvenido.setBounds(10, 11, 162, 14);
 		contentPane.add(lblBienvenido);
 		
+		JButton historial = new JButton("Mi historial");
+		historial.setBounds(299, 10, 110, 23);
+		contentPane.add(historial);
+		historial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					UserHistory frame = new UserHistory(dni);
+					frame.setVisible(true);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		
 		if(gestorLN.estadoUser(dni)) 
 		{
 			devolver(dni);
@@ -64,33 +79,68 @@ public class HomeUser extends JFrame {
 	public void alquilar(final String dni) 
 	{
 		lista=new ArrayList<clsBicicleta>();
-		lista=gestorLN.bicisDisp();
+		//lista=gestorLN.bicisDisp();
+		
 		
 		modelo1= new DefaultListModel<clsBicicleta>();
 		jListaBicis= new JList<clsBicicleta>();
 		
 		jListaBicis= new JList<clsBicicleta>(modelo1);
-		jListaBicis.setBounds(230, 26, 177, 202);
+		jListaBicis.setBounds(230, 46, 177, 182);
 		contentPane.add(jListaBicis);
 		
-		for(clsBicicleta b: lista) {
-			modelo1.addElement(b);
+		modelo2=new DefaultListModel<clsEstacion>();
+		jListaEstaciones=new JList<clsEstacion>(modelo2);
+		jListaEstaciones.setBounds(20, 46, 177, 182);
+		contentPane.add(jListaEstaciones);
+		listaEst = new ArrayList<clsEstacion>();
+		listaEst = gestorLN.getEstacionBD();
+		
+		for(clsEstacion e:listaEst) {
+			modelo2.addElement(e);
 		}
 		
 		
+		JButton btnEstacion = new JButton("Elegir estación");
+		btnEstacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(jListaEstaciones.getSelectedValue()!=null) 
+				{
+					modelo1.removeAllElements();
+					repaint();
+					int cod= jListaEstaciones.getSelectedValue().getIdEstacion();
+					lista=gestorLN.getBicisEstacion(cod);
+					
+					for(clsBicicleta b: lista) {
+						modelo1.addElement(b);
+						System.out.println(b);
+					}
+					repaint();
+				}
+			}
+		});
+		btnEstacion.setBounds(40, 232, 130, 23);
+		contentPane.add(btnEstacion);
 		
-		JButton btnAlquilarBicicleta = new JButton("Alquilar bicicleta");
+		JButton btnAlquilarBicicleta = new JButton("Alquilar bici");
 		btnAlquilarBicicleta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				gestorLN.altaAlquiler(jListaBicis.getSelectedValue().getBici_id(), dni);
-				JOptionPane.showMessageDialog(null, "Bicicleta alquilada con éxito.");
-				dispose();
+				if(jListaBicis.getSelectedValue()!=null) 
+				{
+					gestorLN.cogerBici(dni, jListaBicis.getSelectedValue().getBici_id());
+					JOptionPane.showMessageDialog(null, "Bicicleta alquilada con éxito.");
+					dispose();
+				}else {
+					JOptionPane.showMessageDialog(null, "No hay bicicletas disponibles en la estación seleccionada.");
+				}
+				
 				
 				//CUANDO SE HAGA CON ESTACIONES HABRÁ QUE USAR METODO COGERBICI PARA QUE AFECTE A ESTACIONES
 			}
 		});
-		btnAlquilarBicicleta.setBounds(289, 239, 89, 23);
+		btnAlquilarBicicleta.setBounds(259, 232, 130, 23);
 		contentPane.add(btnAlquilarBicicleta);
 	}
 	
@@ -101,22 +151,42 @@ public class HomeUser extends JFrame {
 		lblDev.setBounds(10, 40, 400, 14);
 		contentPane.add(lblDev);
 		
-		JButton btnDevolver = new JButton("Devolver bicicleta");
+		modelo2=new DefaultListModel<clsEstacion>();
+		jListaEstaciones=new JList<clsEstacion>(modelo2);
+		jListaEstaciones.setBounds(10, 60, 400, 160);
+		contentPane.add(jListaEstaciones);
+		listaEst = new ArrayList<clsEstacion>();
+		listaEst = gestorLN.getEstacionBD();
+		for(clsEstacion e:listaEst) {
+			modelo2.addElement(e);
+		}
+		
+		
+		JButton btnDevolver = new JButton("Devolver");
 		btnDevolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				int duracion = gestorLN.dejarBici(dni);
+				//CAMBIAR PARA INDICAR LA ESTACION EN LA QUE QUEREMOS DEPOSITAR LA BICI
+				if(jListaEstaciones.getSelectedValue()!=null) 
+				{
+					if(gestorLN.comprobarEstacion(jListaEstaciones.getSelectedValue().getIdEstacion())) 
+					{
+						int duracion = gestorLN.dejarBici(dni,jListaEstaciones.getSelectedValue().getIdEstacion());
+						double precio = duracion*0.20;
+						JOptionPane.showMessageDialog(null, "El alquiler ha durado: "+duracion+" minutos. El precio resultante es de: "+
+						precio+" €.");
+						dispose();
+					}else {
+						JOptionPane.showMessageDialog(null, "La estación seleccionada no tiene plazas de aparcamiento disponibles");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "Selecciones la estación donde desea estacionar la bicicleta.");
+				}
 				
-				double precio = duracion*0.20;
-				
-				JOptionPane.showMessageDialog(null, "El alquiler ha durado: "+duracion+" minutos. El precio resultante es de: "+
-				precio+" €.");
-				
-				dispose();
 				//CUANDO SE HAGA CON ESTACIONES HABRÁ QUE USAR METODO COGERBICI PARA QUE AFECTE A ESTACIONES
 			}
 		});
-		btnDevolver.setBounds(289, 200, 89, 23);
+		btnDevolver.setBounds(289, 225, 95, 23);
 		contentPane.add(btnDevolver);
 	}
 }

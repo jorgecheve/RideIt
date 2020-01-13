@@ -23,16 +23,16 @@ public class clsMain {
 		
 		System.out.println("Hola, esto es un proyecto de bicicletas. Para clase.");
 		
-		gestorLN.altaBicicleta(7, "Rojo", "Standard", "Boulevard");
+		/*gestorLN.altaBicicleta(7, "Rojo", "Standard", "Boulevard");
 		gestorLN.altaBicicleta(5, "Amarillo", "Tandem", "Plaza gipuzkoa");
 		gestorLN.altaBicicleta(6, "Azul", "Mountain", "Monte Ulia");
 		
-		gestorLN.altaEstacion(1, "Avenida de Zarautz");
+		
 		
 		gestorLN.altaUsuario("IGNACIO", "SAEZ", "7255296T", "igna", "aaaa2");
 		gestorLN.altaUsuario("Martin", "Odegaard", "21212121R", "martin", "134a2");
-		
-		
+		*/
+		//gestorLN.altaEstacion(1, "Avenida de Zarautz");
 		/*
 		ArrayList<clsEstacion>lista2 = new ArrayList<clsEstacion>();
 		lista2 = gestorLN.getEstacionBD();

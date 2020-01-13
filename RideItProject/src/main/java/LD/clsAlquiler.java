@@ -79,8 +79,8 @@ public class clsAlquiler {
 	}
 	@Override
 	public String toString() {
-		return "clsAlquiler [idAlquiler=" + idAlquiler + ", bici_id=" + bici_id + ", user_dni=" + user_dni
-				+ ", fecha_inicio=" + fecha_inicio + ", fecha_fin=" + fecha_fin + "]";
+		return "[Dur.= "+getDuracion()+" mins, Fecha=" + fecha_inicio.getDayOfMonth()+"/"+fecha_inicio.getMonthValue()+"/"+fecha_inicio.getYear() 
+		+" a las: "+fecha_fin.getHour()+":"+fecha_fin.getMinute()+"]";
 	}
 	
 	

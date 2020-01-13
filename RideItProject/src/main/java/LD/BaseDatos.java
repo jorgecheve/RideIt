@@ -92,7 +92,7 @@ public class BaseDatos {
 			statement.executeUpdate("create table if not exists USUARIO ( nombre string, apellido string, dni string, user string , password string)");
 		} catch (SQLException e) {
 			// Si hay excepci�n es que la tabla ya exist�a (lo cual es correcto)
-			e.printStackTrace();  
+			//e.printStackTrace();  
 		}
 	}
 	/**
@@ -115,7 +115,7 @@ public class BaseDatos {
 	{
 		if (statement==null) return;
 		try {
-			statement.executeUpdate("create table if not exists ESTACION ( idEstacion int, localizacion string)");
+			statement.executeUpdate("create table if not exists ESTACION ( idEstacion int, localizacion string, numPlazas int)");
 		} catch (SQLException e) {
 			// Si hay excepci�n es que la tabla ya exist�a (lo cual es correcto)
 			// e.printStackTrace();  
@@ -191,16 +191,19 @@ public class BaseDatos {
 		}
 	}
 	
-	public static void insertEstacion(int idEstacion, String localizacion)
+	public static void insertEstacion(int idEstacion, String localizacion, int numPlazas)
 	{
+		
 		if (statement==null) return;
-		String i="insert into ESTACION (idEstacion, localizacion) values(?,?)";
+		String i="insert into ESTACION (idEstacion, localizacion, numPlazas) values(?,?,?)";
 		
 		try {
 			 PreparedStatement pstmt = connection.prepareStatement(i);
 			 pstmt.setInt(1, idEstacion);
 			 pstmt.setString(2, localizacion);
+			 pstmt.setInt(3, numPlazas);
 			 pstmt.executeUpdate();
+			 System.out.println("INSERTANDO ESTACION");
 			 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -302,6 +305,25 @@ public class BaseDatos {
 		
 	}
 	
+	public static void borrarBici(int id) 
+	{
+		if (statement==null) return;
+		
+
+		String i="DELETE FROM bicicleta WHERE id='"+id+"'";
+		
+		
+		try {
+			 PreparedStatement pstmt = connection.prepareStatement(i);
+			 
+			 pstmt.executeUpdate();
+			 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static ArrayList<clsUsuario> getAllUsuarios()
 	{
 		if(statement==null)return null;
@@ -334,24 +356,24 @@ public class BaseDatos {
 	{
 		if(statement==null)return null;
 		ArrayList<clsEstacion>lista = new ArrayList<clsEstacion>();
-		String s="select * from ESTACIONES;";
+		String s="select * from ESTACION;";
 		try {
 			ResultSet rs=statement.executeQuery(s);
 			
 			while (rs.next()) {
 				 
 				int idEstacion= rs.getInt("idEstacion");
-	                String localizacion = rs.getString("localizacion");
-	              
-	                
-	                clsEstacion estacion = new clsEstacion(idEstacion, localizacion);
-	                lista.add(estacion);
+	            String localizacion = rs.getString("localizacion");
+	            int plazas = rs.getInt("numPlazas");
+	                   
+	            clsEstacion estacion = new clsEstacion(idEstacion, localizacion,plazas);
+	            lista.add(estacion);
                 
                 				}
 			
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
 		return lista;
 	}

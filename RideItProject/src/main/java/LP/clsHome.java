@@ -185,7 +185,6 @@ public class clsHome extends JFrame {
 					JOptionPane.showMessageDialog(null, "Acceso denegado");
 				}
 				
-				
 			}
 		});
 		

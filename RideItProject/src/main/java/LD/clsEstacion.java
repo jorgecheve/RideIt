@@ -1,28 +1,30 @@
 package LD;
 
+import LN.gestorLN;
+
 public class clsEstacion {
 	
 	private int IdEstacion;
 	private int NumPlazas;
-	private final int PlazasTotal;
-	private int[] Plazas;
 	private String Localizacion;
 	
 	
 	
+	public clsEstacion(int idEstacion, String localizacion, int numPlazas) {
+		super();
+		
+		this.IdEstacion = idEstacion;
+		this.NumPlazas = numPlazas;
+		this.Localizacion = localizacion;
+		
+	}
 	public clsEstacion(int idEstacion, String localizacion) {
 		super();
 		
 		this.IdEstacion = idEstacion;
-		this.PlazasTotal = 10;
-		this.NumPlazas = PlazasTotal;
-		this.Plazas= new int[NumPlazas];
+		this.NumPlazas = 10;
 		this.Localizacion = localizacion;
 		
-		for (int i=0;i<PlazasTotal; i++)
-		{
-			this.Plazas[i]=-1;
-		}
 	}
 	public int getIdEstacion() {
 		return IdEstacion;
@@ -36,24 +38,22 @@ public class clsEstacion {
 	public void setNumPlazas(int numPlazas) {
 		NumPlazas = numPlazas;
 	}
-	public int[] getPlazas() {
-		return Plazas;
-	}
-	public void setPlazas(int[] plazas) {
-		Plazas = plazas;
-	}
+	
 	public String getLocalizacion() {
 		return Localizacion;
 	}
 	public void setLocalizacion(String localizacion) {
 		Localizacion = localizacion;
 	}
+	@Override
+	public String toString() {
+		return "P. libres="+gestorLN.getPlazasDisp(IdEstacion)+"/" + NumPlazas + ", Zona=" + Localizacion
+				+", Cod: "+ IdEstacion+"]";
+	}
 
 	
-	public int getPlazasTotal() {
-		return PlazasTotal;
-	}
 	
+	/*
 	public boolean getPlazasDisp()
 	{
 		if(NumPlazas>0)
@@ -97,5 +97,5 @@ public class clsEstacion {
 		}
 		
 		
-	}
+	}*/
 }
