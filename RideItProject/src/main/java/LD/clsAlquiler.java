@@ -4,7 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 /**
  * 
- * 
+ * clase que contiene todos los atributos que componen un alquiler
  *
  */
 public class clsAlquiler {
@@ -16,7 +16,14 @@ public class clsAlquiler {
 	private LocalDateTime fecha_inicio;
 	private LocalDateTime fecha_fin;
 	
-	
+	/**
+	 * Método constructor de la clase alquiler
+	 * @param bici_id
+	 * @param user_dni
+	 * @param idAlquiler
+	 * @param inicio
+	 * @param fin
+	 */
 	
 	public clsAlquiler(int bici_id, String user_dni, int idAlquiler, LocalDateTime inicio, LocalDateTime fin) {
 		super();
@@ -26,6 +33,12 @@ public class clsAlquiler {
 		this.fecha_inicio = inicio;
 		this.fecha_fin = fin;
 	}
+	/**
+	 * Método constructor de la clase alquiler
+	 * @param bici_id
+	 * @param user_dni
+	 * @param idAlquiler
+	 */
 	public clsAlquiler(int bici_id, String user_dni, int idAlquiler) {
 		super();
 		this.bici_id = bici_id;
@@ -36,7 +49,10 @@ public class clsAlquiler {
 		this.fecha_inicio = ini;
 		this.fecha_fin=null;
 	}
-	
+	/**
+	 * getters y setters de los atributos de la entidad alquiler
+	 * 
+	 */
 	public int getIdAlquiler() {
 		return idAlquiler;
 	}
@@ -67,7 +83,10 @@ public class clsAlquiler {
 	public void setFecha_fin(LocalDateTime fecha_fin) {
 		this.fecha_fin = fecha_fin;
 	}
-	
+	/**
+	 * Metodo para obtener la duración de alquiler
+	 * @return devuelve la duración del alquiler de bicicletas
+	 */
 	//Si se devuelve -1 es que no se ha devuelto la bici todavía
 	public int getDuracion() 
 	{
@@ -80,7 +99,9 @@ public class clsAlquiler {
 		
 		return diferencia;
 	}
-	
+	/**
+	 * Devolvemos una cadena de caracteres con lo que queremos sacar por pantalla 
+	 */
 	@Override
 	public String toString() {
 		return "[Dur.= "+getDuracion()+" mins, Fecha=" + fecha_inicio.getDayOfMonth()+"/"+fecha_inicio.getMonthValue()+"/"+fecha_inicio.getYear() 

@@ -23,7 +23,11 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
-
+/**
+ * 
+ * clase clsHome que contiene la ventana principal desde donde accede el usuario a la aplicacion
+ * La clase extiende de JFrame
+ */
 public class clsHome extends JFrame {
 
 	private JPanel contentPane;

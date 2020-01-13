@@ -18,7 +18,11 @@ import LN.gestorLN;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JButton;
-
+/**
+ * 
+ * clase que contiene el historial de alquileres de los usuarios de la aplicación
+ * La clase extiende de JFrame
+ */
 public class UserHistory extends JFrame {
 
 	private JPanel contentPane;

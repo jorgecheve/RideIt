@@ -1,5 +1,8 @@
 package LN;
-
+/**
+ * Clase que contiene los métodos necesarios para la funcionalidad de la aplicación
+ * estos métodos hacen de enlace entre la lógica de datos LD y la lógica de presentación LP
+ */
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
@@ -16,7 +19,14 @@ public class gestorLN {
 	private static ArrayList<clsUsuario> listaUsuarios; 
 	private static ArrayList<clsEstacion> listaEstaciones;
 	private static ArrayList<clsAlquiler> listaAlquileres;
-	
+	/**
+	 * Método encargado de dar de alta una bicicleta en la BD
+	 * @param cod
+	 * @param color
+	 * @param modelo
+	 * @param ubicacion
+	 * @return
+	 */
 	public static boolean altaBicicleta(int cod, String color, String modelo, String ubicacion){
 		
 		clsBicicleta bike = new clsBicicleta(cod, color, modelo, ubicacion);
@@ -57,6 +67,14 @@ public class gestorLN {
 		
 		//System.out.println(listaBicis.size());
 	}
+	/**
+	 * Método encargado de dar de alta un usuario en la BD
+	 * @param nombre
+	 * @param apellido
+	 * @param dni
+	 * @param usuario
+	 * @param password
+	 */
 public static void altaUsuario(String nombre, String apellido, String dni, String usuario,String password){
 		
 		clsUsuario user = new clsUsuario(nombre, apellido, dni, usuario,password);
@@ -92,7 +110,12 @@ public static void altaUsuario(String nombre, String apellido, String dni, Strin
 		System.out.println("USUARIO CREADO HULIO");
 		//System.out.println(listaBicis.size());
 	}
-
+/**
+ * Método encargado de dar de alta una estación en la BD
+ * @param idEstacion
+ * @param localizacion
+ * @param plazas
+ */
 public static void altaEstacion(int idEstacion, String localizacion, int plazas)
 {
 	
@@ -127,7 +150,11 @@ public static void altaEstacion(int idEstacion, String localizacion, int plazas)
 	
 	//System.out.println(listaBicis.size());
 }
-
+/**
+ * Método encargado de dar de alta un alquiler en la BD
+ * @param id_bici
+ * @param dni_user
+ */
 public static void altaAlquiler(int id_bici, String dni_user){
 	
 	if(listaAlquileres == null) 
@@ -149,7 +176,10 @@ public static void altaAlquiler(int id_bici, String dni_user){
 	
 	//System.out.println(listaBicis.size());
 }
-
+/**
+ * Método que devuelve las bicicletas que hay guardadas en la BD
+ * @return
+ */
 	public static ArrayList<clsBicicleta> getBicisBD()
 	{
 		BaseDatos.initBD("RideIt");
@@ -161,6 +191,10 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		return List;
 	}
+	/**
+	 * Método que devuelve los usuarios que hay guardados en la BD
+	 * @return
+	 */
 	public static ArrayList<clsUsuario> getUsuariosBD() 
 	{
 		BaseDatos.initBD("RideIt");
@@ -171,7 +205,10 @@ public static void altaAlquiler(int id_bici, String dni_user){
 			
 		return List;
 	}
-	
+	/**
+	 * Método que devuelve las estaciones que hay guardadas en la BD
+	 * @return
+	 */
 	public static ArrayList<clsEstacion> getEstacionBD() 
 	{
 		BaseDatos.initBD("RideIt");
@@ -193,7 +230,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		return List;
 	}
-	
+	/**
+	 * Métododo que guarda el alquiler de una bicicleta por parte de un usuario
+	 * @param Dni
+	 * @param idBicicleta
+	 */
 	public static void cogerBici(String Dni, int idBicicleta)
 	{
 		clsBicicleta bici=new clsBicicleta();
@@ -218,7 +259,12 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		
 	}
-	
+	/**
+	 * Método que guarda la finalización del alquiler de una bicicleta por parte de un usuario
+	 * @param dni
+	 * @param estacion
+	 * @return
+	 */
 	public static int dejarBici(String dni, int estacion)
 	{
 		clsAlquiler modif = null;
@@ -260,7 +306,12 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		return modif.getDuracion();
 	}
 	
-	
+	/**
+	 * Método realizado para autenticar a un usuario en la aplicación
+	 * @param usuario
+	 * @param pswd
+	 * @return
+	 */
 	public static boolean autenticacion(String usuario, String pswd) 
 	{
 		boolean autenticado=false;
@@ -277,7 +328,10 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		return autenticado;
 	}
-	
+	/**
+	 * Devuelve las bicicletas disponibles que hay en la BD
+	 * @return
+	 */
 	public static ArrayList<clsBicicleta> bicisDisp()
 	{
 		ArrayList<clsBicicleta> bicis = new ArrayList<clsBicicleta>();
@@ -300,7 +354,9 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		return bicis;
 	}
-	
+	/**
+	 * En este método iniciamos las listas
+	 */
 	public static void iniciarListas() 
 	{
 		listaUsuarios = gestorLN.getUsuariosBD();
@@ -319,7 +375,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		//System.out.println(gestorLN.getPlazasDisp(1)+" plazas libres en la 2");
 		
 	}
-	
+	/**
+	 * Método que comprueba si las estaciones estan libres o no de bicicletas
+	 * @param codigoEst
+	 * @return
+	 */
 	public static boolean comprobarEstacion(int codigoEst) 
 	{
 		int numeroPlazas=0;
@@ -343,7 +403,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		else return true;
 	}
-	
+	/**
+	 * Devuelve las bicicletas de la estación que le pasemos por parámetro
+	 * @param codEst
+	 * @return
+	 */
 	public static ArrayList<clsBicicleta> getBicisEstacion(int codEst)
 	{
 		ArrayList<clsBicicleta>bicisEst=new ArrayList<clsBicicleta>();
@@ -357,7 +421,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		return bicisEst;
 	}
-	
+	/**
+	 * Devuelve el número de plazas disponibles en una estación
+	 * @param estacion
+	 * @return
+	 */
 	public static int getPlazasDisp(int estacion) 
 	{
 		int plazasDisp = 0;
@@ -370,7 +438,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		return plazasDisp;
 	}
-	
+	/**
+	 * Devuelve el usuario que coincida con el atributo user
+	 * @param user
+	 * @return
+	 */
 	public static clsUsuario getUsuario(String user) 
 	{
 		for(clsUsuario u: listaUsuarios) {
@@ -381,7 +453,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		return null;
 	}
-	
+	/**
+	 * Devuelve los alquileres efectuados por un usuario
+	 * @param dni
+	 * @return
+	 */
 	public static ArrayList<clsAlquiler> getAlquileresUser(String dni) 
 	{
 		ArrayList<clsAlquiler>ret = new ArrayList<clsAlquiler>();
@@ -395,7 +471,12 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		return ret;
 	}
-	
+	/**
+	 * Devuelve el coste total por los alquileres efectuados
+	 * @param lista
+	 * @param precio
+	 * @return
+	 */
 	public static double getCosteAlquileres(ArrayList<clsAlquiler>lista, double precio) 
 	{
 		double total=0;
@@ -405,7 +486,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		return total;
 	}
-	
+	/**
+	 * Devuelve el estado del usuario, para ver si esta haciendo uso de un alquiler o no en ese momento
+	 * @param dni
+	 * @return
+	 */
 	public static boolean estadoUser(String dni) 
 	{
 		boolean pendiente=false;
@@ -421,7 +506,9 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		return pendiente;
 	}
-	
+	/**
+	 * Método para probar funcionalidades
+	 */
 	public static void probarListaUs() 
 	{
 		for(clsUsuario user: listaUsuarios) {

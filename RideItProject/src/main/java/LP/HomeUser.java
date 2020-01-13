@@ -19,6 +19,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+/**
+ * 
+ * Clase que contiene la ventana menú una vez que el usuario accede a la aplicación
+ * La clase extiende de JFrame
+ */
 
 public class HomeUser extends JFrame {
 
