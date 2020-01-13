@@ -9,7 +9,6 @@ public class clsUsuario
 	String user;
 	String passwaord;
 	
-	
 	public clsUsuario(String nombre, String apellidos, String dni, String user, String passwaord) {
 		super();
 		this.nombre = nombre;

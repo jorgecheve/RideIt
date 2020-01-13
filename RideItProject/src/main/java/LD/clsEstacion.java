@@ -52,7 +52,6 @@ public class clsEstacion {
 	}
 
 	
-	
 	/*
 	public boolean getPlazasDisp()
 	{

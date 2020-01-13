@@ -77,6 +77,7 @@ public class clsAlquiler {
 		
 		return diferencia;
 	}
+	
 	@Override
 	public String toString() {
 		return "[Dur.= "+getDuracion()+" mins, Fecha=" + fecha_inicio.getDayOfMonth()+"/"+fecha_inicio.getMonthValue()+"/"+fecha_inicio.getYear() 

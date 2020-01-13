@@ -65,7 +65,6 @@ public class HomeUser extends JFrame {
 			}
 		});
 		
-		
 		if(gestorLN.estadoUser(dni)) 
 		{
 			devolver(dni);

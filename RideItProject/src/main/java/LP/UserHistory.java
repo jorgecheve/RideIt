@@ -53,7 +53,6 @@ public class UserHistory extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 		JLabel label = new JLabel("Listado de alquileres");
 		label.setBounds(25, 11, 217, 14);
 		contentPane.add(label);

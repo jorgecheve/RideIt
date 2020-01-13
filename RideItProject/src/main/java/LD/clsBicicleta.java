@@ -47,7 +47,6 @@ public class clsBicicleta {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
 	@Override
 	public String toString() {
 		return "[id:" + bici_id + ", " + color + ", " + modelo  + "]";

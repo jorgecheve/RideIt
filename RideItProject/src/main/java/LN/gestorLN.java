@@ -368,7 +368,6 @@ public static void altaAlquiler(int id_bici, String dni_user){
 				plazasDisp = e.getNumPlazas()-gestorLN.getBicisEstacion(estacion).size();
 			}
 		}
-		
 		return plazasDisp;
 	}
 	
