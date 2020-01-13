@@ -18,7 +18,6 @@ public class clsUsuario
 		this.passwaord = passwaord;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}

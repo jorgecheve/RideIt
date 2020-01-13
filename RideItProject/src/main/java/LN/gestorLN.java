@@ -419,7 +419,6 @@ public static void altaAlquiler(int id_bici, String dni_user){
 			}
 			
 		}
-		
 		return pendiente;
 	}
 	
@@ -430,7 +429,7 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		System.out.println("FIN USUARIOS");
 		for(clsAlquiler user: listaAlquileres) {
-			System.out.println(user);
+			//System.out.println(user);
 		}
 		System.out.println("FIN Alquileres");
 		for(clsBicicleta user: listaBicis) {

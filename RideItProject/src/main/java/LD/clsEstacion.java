@@ -52,49 +52,4 @@ public class clsEstacion {
 	}
 
 	
-	/*
-	public boolean getPlazasDisp()
-	{
-		if(NumPlazas>0)
-		{
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean DejarBici(int idBici)
-	{
-		for(int i=0; i<PlazasTotal; i++)
-		{
-			if(this.Plazas[i]==-1 && this.getPlazasDisp()==true)
-			{
-				this.Plazas[i]=idBici;
-				System.out.println("Bicicleta estacionada");
-				return true;
-			}
-		}
-		
-		System.out.println("No hay plazas disponibles para estacionar");
-		return false;
-	}
-	
-	public int CogerBicicleta(int NumeroP)
-	{
-		int idBicicleta=this.Plazas[NumeroP];
-		
-		if(idBicicleta!=-1)
-		{
-			Plazas[NumeroP]=-1;
-			System.out.println("Bicicleta recogida");
-			return idBicicleta;
-		}
-		else
-		{
-			System.out.println("No existe Bicicleta en esa plaza");
-			return -1;
-			
-		}
-		
-		
-	}*/
 }

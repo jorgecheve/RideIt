@@ -164,7 +164,6 @@ public class clsHome extends JFrame {
 			}
 		});
 		
-		
 		btnLogIn.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 

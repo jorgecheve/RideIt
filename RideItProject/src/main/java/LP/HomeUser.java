@@ -71,8 +71,7 @@ public class HomeUser extends JFrame {
 			
 		}else {
 			alquilar(dni);
-		}
-		
+		}	
 	}
 	
 	public void alquilar(final String dni) 

@@ -2,7 +2,11 @@ package LD;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-
+/**
+ * 
+ * 
+ *
+ */
 public class clsAlquiler {
 	
 	private int idAlquiler;
@@ -67,7 +71,6 @@ public class clsAlquiler {
 	//Si se devuelve -1 es que no se ha devuelto la bici todavía
 	public int getDuracion() 
 	{
-		//LocalDateTime finPrueba = this.fecha_inicio.plusSeconds(1581);
 		int diferencia = -1;
 		if(this.fecha_inicio!=null && this.fecha_fin!=null) 
 		{
