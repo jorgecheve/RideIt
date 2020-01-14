@@ -310,7 +310,7 @@ public class BaseDatos {
 	}
 	/**
 	 * Método que registra la finalización del alquiler de una bicicleta por parte de un usuario
-	 * @param user_bici
+	 * @param user_dni
 	 */
 	public static void finalizarAlquiler(String user_dni)
 	//(String user_dni, LocalDateTime fin) 
