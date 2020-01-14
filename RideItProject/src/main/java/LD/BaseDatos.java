@@ -115,7 +115,7 @@ public class BaseDatos {
 	{
 		if (statement==null) return;
 		try {
-			statement.executeUpdate("create table if not exists ESTACION ( idEstacion int, localizacion string)");
+			statement.executeUpdate("create table if not exists ESTACION ( idEstacion int, localizacion string, numPlazas int)");
 		} catch (SQLException e) {
 			// Si hay excepci�n es que la tabla ya exist�a (lo cual es correcto)
 			// e.printStackTrace();  
@@ -220,12 +220,13 @@ public class BaseDatos {
 		String i="insert into ESTACION (idEstacion, localizacion, numPlazas) values(?,?,?)";
 		
 		try {
+			 System.out.println("INSERTANDO ESTACION");
 			 PreparedStatement pstmt = connection.prepareStatement(i);
 			 pstmt.setInt(1, idEstacion);
 			 pstmt.setString(2, localizacion);
 			 pstmt.setInt(3, numPlazas);
 			 pstmt.executeUpdate();
-			 System.out.println("INSERTANDO ESTACION");
+			
 			 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

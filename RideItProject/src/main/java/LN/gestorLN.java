@@ -366,11 +366,11 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		
 		gestorLN.altaEstacion(1,"Amara",10);
 		gestorLN.altaEstacion(2,"Deusto",4);
-		//gestorLN.altaEstacion(3,"Antiguo",13);
+		gestorLN.altaEstacion(3,"Aiete",13);
 		
-		gestorLN.altaBicicleta(7, "Roja", "Tandem", "2");
+		gestorLN.altaBicicleta(7, "Roja", "Tandem", "1");
 		gestorLN.altaBicicleta(8, "Azul", "Paseo", "2");
-		gestorLN.altaBicicleta(9, "Verde", "Carretera", "2");
+		gestorLN.altaBicicleta(9, "Verde", "Carretera", "3");
 		
 		//System.out.println(gestorLN.getPlazasDisp(1)+" plazas libres en la 2");
 		
@@ -524,7 +524,7 @@ public static void altaAlquiler(int id_bici, String dni_user){
 		}
 		System.out.println("FIN BICIS");
 		for(clsEstacion user: listaEstaciones) {
-			System.out.println(user);
+		//	System.out.println(user);
 		}
 		System.out.println("FIN ESTACIONES");
 	}
