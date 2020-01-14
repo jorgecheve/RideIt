@@ -15,10 +15,10 @@ import LD.clsAlquiler;
 
 public class gestorLN {
 	
-	private static ArrayList<clsBicicleta> listaBicis; 
-	private static ArrayList<clsUsuario> listaUsuarios; 
-	private static ArrayList<clsEstacion> listaEstaciones;
-	private static ArrayList<clsAlquiler> listaAlquileres;
+	public static ArrayList<clsBicicleta> listaBicis; 
+	public static ArrayList<clsUsuario> listaUsuarios; 
+	public static ArrayList<clsEstacion> listaEstaciones;
+	public static ArrayList<clsAlquiler> listaAlquileres;
 	/**
 	 * Método encargado de dar de alta una bicicleta en la BD
 	 * @param cod
